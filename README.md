@@ -1,1 +1,4 @@
+# WinRAR 7.0 DLL Hijack
+DLL Hijacking is possible in WinRAR 7.0 allowing you to execute code on a target machine and gain persistence. Attack requirements are Windows 11 and also WinRAR installed on the machine.
 
+WinRAR looks for a file called `amsi.dll` inside of the path `C:\Program Files\WinRAR\` if you analyse this with procmon you will see it returns the status "NAME NOT FOUND" meaning we can hijack it. All we have to do is create a new Visual Studio solution (PoC has been provided here) and then copy the dll into the path `C:\Program Files\WinRAR\`. On Windows 11, WinRAR is loaded in the right click menu, so every time a user right clicks a file WinRAR file fire and so will the payload making it a perfect persistence technique. Same goes for is the user opens a .rar file or WinRAR itself.
